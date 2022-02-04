@@ -23,9 +23,9 @@ void testApp::setup(){
     ofBackground(0,0,0);
 	
 	// set up the boids
-	for (int i = 0; i < 600; i++)
+	for (int i = 0; i < 400; i++)
 		boids.push_back(new Boid());
-    for (int i = 0; i < 400; i++)
+    for (int i = 0; i < 600; i++)
         birds.push_back(new Bird());
 
 }

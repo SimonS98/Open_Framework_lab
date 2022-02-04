@@ -15,13 +15,11 @@
 
 class Bird : public Boid
 {
-private:
-    ofVec3f inPos;
-    ofVec3f inVel;
+
     
 public:
 //this is a new constructor for our derived Babies class
-    Bird();
+ 
 
 //here in the new class's header file we announce that we are
 //going to change what the inherited draw() function does

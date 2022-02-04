@@ -13,16 +13,16 @@
 
 Boid::Boid()
 {
-    separationWeight = 0.5f;
+    separationWeight = 0.9f;
     cohesionWeight = 0.1f;
     alignmentWeight = 0.2f;
     
-    groupSepWeight = 0.5f;
-    groupDetect = 30;
+    groupSepWeight = 0.8f;
+    groupDetect = 50;
     
     
     separationThreshold = 30;
-    neighbourhoodSize = 50;
+    neighbourhoodSize = 100;
     
     position = ofVec3f(ofRandom(0, 20), ofRandom(0, 20));
     velocity = ofVec3f(ofRandom(-10, 1), ofRandom(-10, 1));
@@ -197,18 +197,18 @@ void Boid::walls(ofVec3f &min, ofVec3f &max)
 {
 	if (position.x < min.x){
 		position.x = max.x;
-		velocity.x *= 0.5;
+		velocity.x *= 0.9;
 	} else if (position.x > max.x){
 		position.x = min.x;
-		velocity.x *= 0.5;
+		velocity.x *= 0.9;
 	}
 	
 	if (position.y < min.y){
 		position.y = max.y;
-		velocity.y *= 0.5;
+		velocity.y *= 0.9;
 	} else if (position.y > max.y){
 		position.y = min.y;
-		velocity.y *= 0.5;
+		velocity.y *= 0.9;
 	}
 	
 	
@@ -216,12 +216,12 @@ void Boid::walls(ofVec3f &min, ofVec3f &max)
 
 void Boid::draw()
 {
-    //ofSetColor(255-position.y/3, 255-position.x/4, position.x*position.y/1200);
+    //ofSetColor(255-position.y/3, 255-position.x/4, position.x*position.y/2000);
     ofSetColor(255, 255, 255);
     //ofSetColor(138, 3, 3);
     
     //just dots
-    //ofCircle(position.x, position.y, 5);
+    ofCircle(position.x, position.y, 5);
     
     //triangle
     ofVec3f plusSpeed=velocity;
@@ -236,9 +236,11 @@ void Boid::draw()
 
     }
 
-    //ofTriangle(position.x,position.y,position.x+cos(60.0)*15-plusSpeed.x*2.2,position.y+sin(60.0)*15-plusSpeed.y*2.2,position.x+sin(60.0)*15-plusSpeed.x*2.2,position.y+cos(60.0)*15-plusSpeed.y*2.2);
+    ofTriangle(position.x,position.y,position.x+cos(60.0)*15-plusSpeed.x*2.2,position.y+sin(60.0)*15-plusSpeed.y*2.2,position.x+sin(60.0)*15-plusSpeed.x*2.2,position.y+cos(60.0)*15-plusSpeed.y*2.2);
     
-    ofTriangle(position.x+plusSpeed.x*2.2,position.y+plusSpeed.y*2.2,position.x+cos(60.0)*15,position.y+sin(60.0)*15,position.x+sin(60.0)*15,position.y+cos(60.0)*15);
+    
+    //ofTriangle(position.x,position.y,position.x+cos(ofRandom(55.0, 60.0))*50,position.y+sin(ofRandom(55.0, 60.0))*50,position.x+sin(ofRandom(55.0, 60.0))*50,position.y+cos(ofRandom(55.0, 60.0))*50);
+    //ofTriangle(position.x+plusSpeed.x*2.2,position.y+plusSpeed.y*2.2,position.x+cos(60.0)*15,position.y+sin(60.0)*15,position.x+sin(60.0)*15,position.y+cos(60.0)*15);
 }
 
 
